@@ -3,15 +3,33 @@
 {% block title %}Home{% endblock %}
 
 {% block content %}
-{% if user.is_authenticated %}
-  Hi {{ user.username }}!
-  <form method="post" action="{% url 'logout' %}">
-    {% csrf_token %}
-    <button type="submit">logout</button>
+<div>
+  {% if user.is_authenticated %}
+    Hi {{ user.first_name }}!
+    <form method="post" action="{% url 'logout' %}">
+      {% csrf_token %}
+      <button type="submit">logout</button>
+    </form>
+    <a href="{% url 'manage' %}">Manage bookings</a>
+  {% else %}
+    <p>You are not logged in</p>
+    <a href="{% url 'login' %}">Log In</a>
+  {% endif %}
+</div>
+<div>
+  <form method="get" action="{% url 'offers' %}">
+    <select name="kind" id="kind">
+      <option value="Excavator">Excavator</option>
+      <option value="Concrete mixer">Concrete mixer</option>
+      <option value="Bulldozer">Bulldozer</option>
+      <option value="Jackhammer">Jackhammer</option>
+      <option value="Drill">Drill</option>
+      <option value="Scaffolding">Scaffolding</option>
+      <option value="Concrete pump">Concrete pump</option>
+      <option value="Chainsaw">Chainsaw</option>
+      <option value="Angle grinder">Angle grinder</option>
+    </select>
+    <button type="submit">search</button>
   </form>
-  <a href="{% url 'manage' %}">Manage bookings</a>
-{% else %}
-  <p>You are not logged in</p>
-  <a href="{% url 'login' %}">Log In</a>
-{% endif %}
+</div>
 {% endblock %}

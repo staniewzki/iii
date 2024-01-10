@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+  <p>Rodzaj: {{ kind }}</p>
+  {% for offer in offers %}
+    <div>
+      <p>{{ offer.name }}</p>
+      <p>{{ offer.description }}</p>
+    </div>
+  {% endfor %}
+{% endblock %}
