@@ -3,5 +3,10 @@
 {% block title %}Manage{% endblock %}
 
 {% block content %}
-Your bookings: you do not have any bookings yet.
+Your bookings:
+{% if bookings %}
+    {{ bookings }}
+{% else %}
+    you do not have any bookings yet.
+{% endif %}
 {% endblock %}

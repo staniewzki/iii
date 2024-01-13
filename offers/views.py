@@ -4,6 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect, get_object_or_404
 
 from .models import *
+from datetime import datetime, timedelta
 
 def index(request):
     template = loader.get_template('index.html')
@@ -26,17 +27,24 @@ def offers(request):
 
 @login_required(login_url="/accounts/login/")
 def book(request, offer_id):
+    begin = datetime.strptime(request.POST['begin'], '%Y-%m-%d')
+    end = datetime.strptime(request.POST['end'], '%Y-%m-%d')
+    day = timedelta(days=1)
     frame = get_object_or_404(Availability,
         offer_id=offer_id,
-        begin__lte=request.POST['begin'],
-        end__gte=request.POST['end'],
+        begin__lte=begin.date(),
+        end__gte=end.date(),
     )
-    new_frame = Availability(offer=frame.offer, begin=request.POST['end'])
-    # todo: implement logic
+    new_frame = Availability(offer=frame.offer, begin=(end + day).date(), end=frame.end)
+    frame.end = (begin - day).date()
+    frame.save(), new_frame.save()
+    Booking(owner=request.user.appuser, offer=frame.offer, begin=begin.date(), end=end.date()).save()
     return redirect('manage')
 
 @login_required(login_url="/accounts/login/")
 def manage(request):
     template = loader.get_template('manage.html')
-    context = {}
+    context = {
+        'bookings': Booking.objects.filter(owner=request.user.appuser),
+    }
     return HttpResponse(template.render(context, request))
