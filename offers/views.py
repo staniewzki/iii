@@ -11,7 +11,16 @@ def index(request):
 
 def offers(request):
     template = loader.get_template('offers.html')
-    context = {'offers': Offer.objects.all(), 'kind': request.GET['kind']}
+    context = {
+        'kind': request.GET['kind'],
+        'begin': request.GET['begin'],
+        'end': request.GET['end'],
+        'offers': Offer.objects.filter(
+            kind=request.GET['kind'],
+            availability__begin__lte=request.GET['begin'],
+            availability__end__gte=request.GET['end'],
+        ),
+    }
     return HttpResponse(template.render(context, request))
 
 @login_required(login_url="/accounts/login/")
