@@ -1,6 +1,7 @@
 from django.http import HttpResponse
 from django.template import loader
 from django.contrib.auth.decorators import login_required
+from django.shortcuts import redirect, get_object_or_404
 
 from .models import *
 
@@ -22,6 +23,17 @@ def offers(request):
         ),
     }
     return HttpResponse(template.render(context, request))
+
+@login_required(login_url="/accounts/login/")
+def book(request, offer_id):
+    frame = get_object_or_404(Availability,
+        offer_id=offer_id,
+        begin__lte=request.POST['begin'],
+        end__gte=request.POST['end'],
+    )
+    new_frame = Availability(offer=frame.offer, begin=request.POST['end'])
+    # todo: implement logic
+    return redirect('manage')
 
 @login_required(login_url="/accounts/login/")
 def manage(request):
