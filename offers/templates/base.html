@@ -10,7 +10,7 @@
 <body>
   <main>
     <div class="account-header">
-      <span class="header-logo">RentIt</span>
+      <a class="header-logo" href="{% url 'index' %}">RentIt</a>
       <span class="header-fill"></span>
       {% if user.is_authenticated %}
         Cześć {{ user.first_name }}!
