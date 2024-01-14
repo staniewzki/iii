@@ -9,6 +9,21 @@
 </head>
 <body>
   <main>
+    <div class="account-header">
+      <span class="header-logo">RentIt</span>
+      <span class="header-fill"></span>
+      {% if user.is_authenticated %}
+        Cześć {{ user.first_name }}!
+        <a href="{% url 'manage' %}" class="btn">Twoje rezerwacje</a>
+        <form method="post" action="{% url 'logout' %}">
+          {% csrf_token %}
+          <button type="submit" class="btn">Wyloguj się</button>
+        </form>
+      {% else %}
+        <a href="{% url 'login' %}" class="btn">Zaloguj się</a>
+      {% endif %}
+    </div>
+
     {% block content %}
     {% endblock %}
   </main>

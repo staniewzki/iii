@@ -1,12 +1,25 @@
 {% extends "base.html" %}
 
-{% block title %}Manage{% endblock %}
+{% block title %}Zarządzaj{% endblock %}
 
-{% block content %}
-Your bookings:
-{% if bookings %}
-    {{ bookings }}
-{% else %}
-    you do not have any bookings yet.
-{% endif %}
+<div>
+    {% block content %}
+    <p>Your bookings:</p>
+    {% if bookings %}
+        {% for booking in bookings %}
+            <div>
+                <p>
+                {{ booking.offer.name }},
+                od {{ booking.begin | date:"Y-m-d" }} do {{ booking.end | date:"Y-m-d" }}
+                </p>
+                <p>
+                    Kontakt: tel. {{ booking.offer.owner.phone_number }}, mail: {{ booking.offer.owner.user.email }}
+                </p>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>You do not have any bookings yet.</p>
+    {% endif %}
+</div>
+
 {% endblock %}
