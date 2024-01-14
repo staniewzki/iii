@@ -12,7 +12,7 @@ const itemTranslations = {
     "Angle grinder": "Szlifierka kątowa"
 }
 
-const fillSelect = () => {
+const updatePage = () => {
     const kindSelect = document.getElementById("kind");
     const offersHeader = document.getElementById("offers-header");
     const noOffersHeader = document.getElementById("no-offers-header");
@@ -39,4 +39,4 @@ const fillSelect = () => {
     }
 }
 
-window.onload = fillSelect;
+window.onload = updatePage;
