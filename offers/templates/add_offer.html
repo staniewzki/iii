@@ -3,12 +3,11 @@
 {% block title %}Opublikuj ofertę{% endblock %}
 
 {% block content %}
-<div>
-    <form>
-        <label for="name">Nazwa</label>
-        <input type="text" id="name">
+<div class="search">
+    <form class="search-form">
+        <input required type="text" id="name" placeholder="Wpisz nazwę sprzętu..." class="search-item">
         <select required name="kind" id="kind" class="search-item">
-          <option value="" disabled selected>Co chcesz wynająć?</option>
+          <option value="" disabled selected>Co wynajmujesz?</option>
           <option value="Excavator">Koparka</option>
           <option value="Concrete mixer">Betoniarka</option>
           <option value="Bulldozer">Buldożer</option>
@@ -19,8 +18,7 @@
           <option value="Chainsaw">Piła łańcuchowa</option>
           <option value="Angle grinder">Szlifierka kątowa</option>
         </select>
-        <label for="description">Opis</label>
-        <input type="text" id="description">
+        <input required type="text" id="description" placeholder="Dodaj opis..." class="search-item">
         <button type="submit" class="btn">Opublikuj ofertę</button>
     </form>
 </div>

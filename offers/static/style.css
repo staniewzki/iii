@@ -17,6 +17,7 @@ body {
   border: none;
   cursor: pointer;
   box-shadow: #707070 0 2px;
+  white-space: nowrap;
 }
 
 .btn:hover {
@@ -53,7 +54,7 @@ body {
 }
 
 .search {
-  padding: 80px 25vw;
+  padding: 80px 0;
   background-color: #202020;
   display: flex;
   justify-content: center;
@@ -72,10 +73,13 @@ body {
   box-shadow: #707070 0 2px;
   border: none;
   color: white;
+  flex: 5;
+  min-width: 100px;
 }
 
 .search-bar {
   width: 100%;
+  min-width: 200px;
 }
 
 textarea:focus, input:focus{
@@ -123,13 +127,14 @@ textarea:focus, input:focus{
 .offer-list {
   padding: 0 25vw;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 20px;
 }
 
 .offer-item {
-  width: 100%;
+  width: calc(100% - 80px);
   padding: 40px;
   background-color: #303030;
   border: 1px solid #404040;
@@ -163,3 +168,25 @@ textarea:focus, input:focus{
   max-width: 80%;
   word-wrap: break-word;
 }
+
+.booking-info {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 20px;
+}
+
+.booking-desc {
+  margin: 0;
+  font-size: 24px;
+  max-width: 80%;
+  word-wrap: break-word;
+}
+
+.booking-contact {
+  margin: 0;
+  font-size: 16px;
+  max-width: 80%;
+  word-wrap: break-word;
+}
+

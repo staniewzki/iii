@@ -3,20 +3,6 @@
 {% block title %}Login{% endblock %}
 
 {% block content %}
-<div class="account-header">
-  <a href="{% url 'index' %}" class="header-logo">RentIt</a>
-  <span class="header-fill"></span>
-  {% if user.is_authenticated %}
-  Cześć {{ user.first_name }}!
-  <a href="{% url 'manage' %}" class="btn">Twoje rezerwacje</a>
-  <form method="post" action="{% url 'logout' %}">
-    {% csrf_token %}
-    <button type="submit" class="btn">Wyloguj się</button>
-  </form>
-  {% else %}
-  <a href="{% url 'login' %}" class="btn">Zaloguj się</a>
-  {% endif %}
-</div>
 <div class="login-container">
   <div class="login">
     <h2>Log In</h2>
