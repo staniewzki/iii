@@ -5,30 +5,30 @@
 <div>
     {% block content %}
     <p class="offers-header">Twoje rezerwacje:</p>
-    {% if bookings %}
         <div class="offer-list">
-            {% for booking in bookings %}
-            <div class="offer-item">
-                <div class="booking-info">
-                    <p class="booking-desc">
-                        {{ booking.offer.name }},
-                        od {{ booking.begin | date:"Y-m-d" }} do {{ booking.end | date:"Y-m-d" }}
-                    </p>
-                    <p class="booking-contact">
-                        {{ booking.offer.owner.user.first_name }},
-                        kontakt: tel. {{ booking.offer.owner.phone_number }}, mail: {{ booking.offer.owner.user.email }}
-                    </p>
+            {% if bookings %}
+                {% for booking in bookings %}
+                <div class="offer-item">
+                    <div class="booking-info">
+                        <p class="booking-desc">
+                            {{ booking.offer.name }},
+                            od {{ booking.begin | date:"Y-m-d" }} do {{ booking.end | date:"Y-m-d" }}
+                        </p>
+                        <p class="booking-contact">
+                            {{ booking.offer.owner.user.first_name }},
+                            kontakt: tel. {{ booking.offer.owner.phone_number }}, mail: {{ booking.offer.owner.user.email }}
+                        </p>
+                    </div>
                 </div>
-            </div>
-            {% endfor %}
+                {% endfor %}
+            {% else %}
+                <p class="offer-item">Nie masz jeszcze żadnych rezerwacji.</p>
+            {% endif %}
         </div>
-    {% else %}
-        <p>Nie masz jeszcze żadnych rezerwacji.</p>
-    {% endif %}
 
     <p class="offers-header">Twoje oferty:</p>
-    {% if offers %}
-        <div class="offer-list">
+    <div class="offer-list">
+        {% if offers %}
             {% for offer in offers %}
             <div class="offer-item">
                 <div class="booking-info">
@@ -41,14 +41,13 @@
                 </div>
             </div>
             {% endfor %}
-        </div>
-    {% else %}
-        <p>Nie masz jeszcze żadnych ofert.</p>
-    {% endif %}
-
+        {% else %}
+            <p class="offer-item">Nie masz jeszcze żadnych ofert.</p>
+        {% endif %}
+    </div>
     <p class="offers-header">Rezerwacje twoich ofert:</p>
-    {% if rentings %}
-        <div class="offer-list">
+    <div class="offer-list">
+        {% if rentings %}
             {% for booking in rentings %}
             <div class="offer-item">
                 <div class="booking-info">
@@ -63,10 +62,10 @@
                 </div>
             </div>
             {% endfor %}
-        </div>
-    {% else %}
-        <p>Nikt jeszcze nie zarezerwował twoich ofert.</p>
-    {% endif %}
+        {% else %}
+            <p class="offer-item">Nikt jeszcze nie zarezerwował twoich ofert.</p>
+        {% endif %}
+    </div>
 </div>
 
 {% endblock %}

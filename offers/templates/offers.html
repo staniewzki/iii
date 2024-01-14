@@ -4,7 +4,7 @@
 
 {% block content %}
   {% if offers %}
-  <p class="offers-header">Oferty dla przedmiotu "{{ kind }}" od {{ begin }} do {{ end }}:</p>
+  <p class="offers-header" id="offers-header">Oferty dla przedmiotu "${{ kind }}$" od {{ begin }} do {{ end }}:</p>
   <div class="offer-list">
     {% for offer in offers %}
     <div class="offer-item">
@@ -22,6 +22,8 @@
     {% endfor %}
   </div>
   {% else %}
-  <p class="offers-header">Nie znaleziono ofert dla przedmiotu "{{ kind }}" od {{ begin }} do {{ end }}.</p>
+  <p class="offers-header" id="no-offers-header">
+    Nie znaleziono ofert dla przedmiotu "${{ kind }}$" od {{ begin }} do {{ end }}.
+  </p>
   {% endif %}
 {% endblock %}
