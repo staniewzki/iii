@@ -13,8 +13,8 @@
       <a class="header-logo" href="{% url 'index' %}">RentIt</a>
       <span class="header-fill"></span>
       {% if user.is_authenticated %}
-        Cześć {{ user.first_name }}!
-        <a href="{% url 'manage' %}" class="btn">Twoje rezerwacje</a>
+        Cześć {{ user.first_name }}
+        <a href="{% url 'manage' %}" class="btn">Twoje rezerwacje i oferty</a>
       <a href="{% url 'add_offer' %}" class="btn">Dodaj ofertę</a>
         <form method="post" action="{% url 'logout' %}">
           {% csrf_token %}

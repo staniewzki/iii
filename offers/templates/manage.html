@@ -4,7 +4,7 @@
 
 <div>
     {% block content %}
-    <p class="offers-header">Your bookings:</p>
+    <p class="offers-header">Twoje rezerwacje:</p>
     {% if bookings %}
         <div class="offer-list">
             {% for booking in bookings %}
@@ -15,15 +15,57 @@
                         od {{ booking.begin | date:"Y-m-d" }} do {{ booking.end | date:"Y-m-d" }}
                     </p>
                     <p class="booking-contact">
-                        Kontakt: tel. {{ booking.offer.owner.phone_number }}, mail: {{ booking.offer.owner.user.email }}
+                        {{ booking.offer.owner.user.first_name }},
+                        kontakt: tel. {{ booking.offer.owner.phone_number }}, mail: {{ booking.offer.owner.user.email }}
                     </p>
                 </div>
             </div>
             {% endfor %}
         </div>
-
     {% else %}
-        <p>You do not have any bookings yet.</p>
+        <p>Nie masz jeszcze żadnych rezerwacji.</p>
+    {% endif %}
+
+    <p class="offers-header">Twoje oferty:</p>
+    {% if offers %}
+        <div class="offer-list">
+            {% for offer in offers %}
+            <div class="offer-item">
+                <div class="booking-info">
+                    <p class="booking-desc">
+                        {{ offer.name }}
+                    </p>
+                    <p class="booking-contact">
+                        {{ offer.description }}
+                    </p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>Nie masz jeszcze żadnych ofert.</p>
+    {% endif %}
+
+    <p class="offers-header">Rezerwacje twoich ofert:</p>
+    {% if rentings %}
+        <div class="offer-list">
+            {% for booking in rentings %}
+            <div class="offer-item">
+                <div class="booking-info">
+                    <p class="booking-desc">
+                        {{ booking.offer.name }},
+                        od {{ booking.begin | date:"Y-m-d" }} do {{ booking.end | date:"Y-m-d" }}
+                    </p>
+                    <p class="booking-contact">
+                        {{ booking.owner.user.first_name }},
+                        kontakt: tel. {{ booking.owner.phone_number }}, mail: {{ booking.owner.user.email }}
+                    </p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>Nikt jeszcze nie zarezerwował twoich ofert.</p>
     {% endif %}
 </div>
 

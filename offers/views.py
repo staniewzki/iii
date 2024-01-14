@@ -49,7 +49,10 @@ def book(request, offer_id):
 @login_required(login_url="/accounts/login/")
 def manage(request):
     template = loader.get_template('manage.html')
+    print(Offer.objects.filter(owner=request.user.appuser))
     context = {
         'bookings': Booking.objects.filter(owner=request.user.appuser),
+        'offers': Offer.objects.filter(owner=request.user.appuser),
+        'rentings': Booking.objects.filter(offer__owner=request.user.appuser),
     }
     return HttpResponse(template.render(context, request))
