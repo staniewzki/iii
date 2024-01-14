@@ -1,4 +1,165 @@
+* {
+  font-family: verdana, serif;
+  font-size: 18px;
+}
+
 body {
-  background-color: lightblue;
-  font-family: verdana;
+  background-color: #121212;
+  color: white;
+  margin: 0;
+}
+
+.btn {
+  text-decoration: none;
+  color: white;
+  padding: 10px;
+  background-color: #404040;
+  border: none;
+  cursor: pointer;
+  box-shadow: #707070 0 2px;
+}
+
+.btn:hover {
+  filter: brightness(125%);
+}
+
+.account-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 25vw;
+  gap: 20px;
+  background-color: #1e1500;
+  white-space: nowrap;
+}
+
+.header-logo {
+  color: #ffb000;
+  font-size: 32px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.header-logo:hover {
+  filter: brightness(125%);
+}
+
+.header-fill {
+  width: 100%;
+}
+
+.welcome {
+
+}
+
+.search {
+  padding: 80px 25vw;
+  background-color: #202020;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.search-form {
+  width: 50vw;
+  display: flex;
+  gap: 5px;
+}
+
+.search-item {
+  padding: 15px;
+  background-color: #404040;
+  box-shadow: #707070 0 2px;
+  border: none;
+  color: white;
+}
+
+.search-bar {
+  width: 100%;
+}
+
+textarea:focus, input:focus{
+  outline: none;
+}
+
+.date-select {
+  display: inline;
+  background-color: #404040;
+  box-shadow: #707070 0 2px;
+  white-space: nowrap;
+}
+
+.date-input {
+  border: none;
+  background-color: #404040;
+  color: white;
+  cursor: pointer;
+}
+
+.search-btn {
+  cursor: pointer;
+}
+
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+}
+
+.login {
+  padding: 50px;
+  background-color: #404040;
+  box-shadow: #707070 0 2px;
+}
+
+.offers-header {
+  background-color: #202020;
+  border: 1px solid #404040;
+  margin: 20px 25vw;
+  padding: 20px;
+}
+
+.offer-list {
+  padding: 0 25vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.offer-item {
+  width: 100%;
+  padding: 40px;
+  background-color: #303030;
+  border: 1px solid #404040;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  box-shadow: #707070 0 2px;
+}
+
+.offer-item .btn {
+  padding: 15px 20px;
+}
+
+.offer-info {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  gap: 20px;
+}
+
+.offer-info .offer-title {
+  margin: 0;
+  font-size: 24px;
+  max-width: 80%;
+  word-wrap: break-word;
+}
+
+.offer-info .offer-description {
+  margin: 0;
+  font-size: 16px;
+  max-width: 80%;
+  word-wrap: break-word;
 }

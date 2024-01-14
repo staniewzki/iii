@@ -3,22 +3,24 @@
 {% block title %}Home{% endblock %}
 
 {% block content %}
-<div>
+<div class="account-header">
+  <span class="header-logo">RentIt</span>
+  <span class="header-fill"></span>
   {% if user.is_authenticated %}
-    Hi {{ user.first_name }}!
+    Cześć {{ user.first_name }}!
+    <a href="{% url 'manage' %}" class="btn">Twoje rezerwacje</a>
     <form method="post" action="{% url 'logout' %}">
       {% csrf_token %}
-      <button type="submit">logout</button>
+      <button type="submit" class="btn">Wyloguj się</button>
     </form>
-    <a href="{% url 'manage' %}">Manage bookings</a>
   {% else %}
-    <p>You are not logged in</p>
-    <a href="{% url 'login' %}">Log In</a>
+    <a href="{% url 'login' %}" class="btn">Zaloguj się</a>
   {% endif %}
 </div>
-<div>
-  <form method="get" action="{% url 'offers' %}">
-    <select name="kind" id="kind">
+<div class="search">
+  <form method="get" action="{% url 'offers' %}" class="search-form">
+    <select required name="kind" id="kind" class="search-bar search-item">
+      <option value="" disabled selected>Co chcesz wynająć?</option>
       <option value="Excavator">Excavator</option>
       <option value="Concrete mixer">Concrete mixer</option>
       <option value="Bulldozer">Bulldozer</option>
@@ -29,11 +31,15 @@
       <option value="Chainsaw">Chainsaw</option>
       <option value="Angle grinder">Angle grinder</option>
     </select>
-    <label for="begin">Begin:</label>
-    <input type="date" id="begin" name="begin">
-    <label for="end">End:</label>
-    <input type="date" id="end" name="end">
-    <button type="submit">search</button>
+    <div class="date-select search-item">
+      <label for="begin">Od:</label>
+      <input required type="date" id="begin" name="begin" class="date-input">
+    </div>
+    <div class="date-select search-item">
+      <label for="end">Do:</label>
+      <input required type="date" id="end" name="end" class="date-input">
+    </div>
+    <button type="submit" class="btn search-item">Szukaj</button>
   </form>
 </div>
 {% endblock %}
