@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}Opublikuj ofertę{% endblock %}
+
+{% block content %}
+<div>
+    <form>
+        <label for="name">Nazwa</label>
+        <input type="text" id="name">
+        <select required name="kind" id="kind" class="search-item">
+          <option value="" disabled selected>Co chcesz wynająć?</option>
+          <option value="Excavator">Koparka</option>
+          <option value="Concrete mixer">Betoniarka</option>
+          <option value="Bulldozer">Buldożer</option>
+          <option value="Jackhammer">Młot pneumatyczny</option>
+          <option value="Drill">Wiertarka</option>
+          <option value="Scaffolding">Rusztowanie</option>
+          <option value="Concrete pump">Pompa do betonu</option>
+          <option value="Chainsaw">Piła łańcuchowa</option>
+          <option value="Angle grinder">Szlifierka kątowa</option>
+        </select>
+        <label for="description">Opis</label>
+        <input type="text" id="description">
+        <button type="submit" class="btn">Opublikuj ofertę</button>
+    </form>
+</div>
+{% endblock %}

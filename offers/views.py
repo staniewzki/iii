@@ -26,6 +26,11 @@ def offers(request):
     return HttpResponse(template.render(context, request))
 
 @login_required(login_url="/accounts/login/")
+def add_offer(request):
+    template = loader.get_template('add_offer.html')
+    return HttpResponse(template.render({}, request))
+
+@login_required(login_url="/accounts/login/")
 def book(request, offer_id):
     begin = datetime.strptime(request.POST['begin'], '%Y-%m-%d')
     end = datetime.strptime(request.POST['end'], '%Y-%m-%d')

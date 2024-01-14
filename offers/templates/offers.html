@@ -13,7 +13,7 @@
       </div>
       <form method="post" action="{% url 'book' offer.id %}">
         {% csrf_token %}
-        <button type="submit" class="btn">Book</button>
+        <button type="submit" class="btn">Zarezerwuj</button>
         <input type="hidden" name="begin" value="{{ begin }}">
         <input type="hidden" name="end" value="{{ end }}">
       </form>
